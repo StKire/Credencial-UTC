@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="icon" href="./images/logoBlanco.png" type="image/x-icon">
+
+    <title>Credencial UTC Ecatepec</title>
+</head>
+
+<body class="d-flex align-items-center justify-content-center vh-100"
+    style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+    <div class="container-lg">
+        <div class="text-center bg-primary bg-opacity-75 p-4 shadow row"
+            style="border-radius: 1.5rem; color: white;">
+            <div class="col-lg-6 col-md-12 mb-md-3">
+                <img src="/images/logoBlanco.png" alt="Logo UTC" class="img-fluid">
+                <h1 class="h4">Credencial UTC Ecatepec</h1>
+            </div>
+            <form class="col-lg-6 col-md-12 h-100 my-auto">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput" class="text-black">Correo Electronico</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword" class="text-black">Contrsaseña</label>
+                </div>
+                <button type="submit" class="btn btn-light text-primary mt-5 py-2 px-5 fs-4"
+                    onclick="window.location.href='/views/credencial.html'; return false;">
+                    Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+<!-- <script src="/js/validacion.js" type="module"></script> -->
+    <script src="js/bootstrap.bundle.js"></script>
+</html>

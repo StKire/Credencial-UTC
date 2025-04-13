@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="icon" href="images/logoutc.png" type="image/x-icon">
+
+    <title>Credencial Utc Ecatepec</title>
+</head>
+
+<body style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="credencial.html">
+                <img src="/images/logoBlanco.png" alt="Logo Utc Ecatepec" class="me-2" style="width: 50px;">
+                Credencial Utc Ecatepec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda</a></li>
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="preguntasFrecuentes.html" class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
+                </ul>
+                <div class="d-flex align-items-center ms-3">
+                    <img src="/images/fotoPrueba.png" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none" style="width: 50px;">
+                    <div>
+                        <p class="mb-0 text-white" id="userName">Gomez Pineda Erik Alejandro</p>
+                        <button class="btn btn-light btn-sm" onclick="cerrarSesion()">Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row mb-4 bg-primary text-white rounded-5">
+            <div class="col text-center">
+                <h2 class="text-center">Bienvenido a la Credencial Utc Ecatepec</h2>
+                <p>Genera tu credencial de estudiante de manera rápida y sencilla.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="bg-white pb-3 rounded-3 overflow-hidden">
+                    <div class="card-header bg-primary text-white text-center py-1 mb-2">
+                        <h2><ion-icon name="id-card"></ion-icon> Credencial Utc Ecatepec</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="position-relative d-inline-block">
+                            <img src="/images/infantil.jpg" alt="" class="rounded-circle mb-3" style="width: 150px;">
+                            <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;">
+                                <ion-icon name="camera-reverse"></ion-icon>
+                            </button>
+                        </div>
+                        <p><strong>Nombre:</strong> [Nombre del Estudiante]</p>
+                        <p><strong>Matricula:</strong> [Número de Matrícula]</p>
+                        <p><strong>Carrera:</strong> [Nombre de la Carrera]</p>
+                        <p><strong>Cuatrimestre:</strong> [Cuatrimestre]</p>
+                        <p><strong>Vigencia:</strong> [Fecha de Vencimiento]</p>
+                        <p><strong>Correo:</strong> [Correo Institucional]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <button class="btn btn-primary w-100 mb-2" id="btnDescargar"><ion-icon name="download-outline"></ion-icon> Descargar Credencial</button>
+                            <button class="btn btn-primary w-100" id="btnSolicitar"><ion-icon name="bag-check"></ion-icon> Solicitar Credencial Física</button>
+                        </div>
+                        <hr>
+                        <div>
+                            <h3 class="text-primary text-center"><ion-icon name="chatbox"></ion-icon> Notificaciones</h3>
+                            <div class="text-center" id="notificaciones">No Tienes Notificaciones por el Momento</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5" >
+            <div class="col">
+                <div class="bg-white rounded-5 p-3">
+                    <div class="card-body text-center">
+                        <h2 class="mb-4 text-primary">Información Importante <ion-icon name="alert"></ion-icon></h2>
+                        <p>La credencial es un documento oficial que te identifica como estudiante de la Utc Ecatepec.</p>
+                        <p>Es importante que la lleves contigo en todo momento.</p>
+                        <p>Si tienes alguna duda, no dudes en contactarnos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white text-center py-4">
+        <p>&copy; 2025 Utc Ecatepec Todos los derechos reservados</p>
+        <p>Dirección: Av. Central 123, Ecatepec, Estado de México</p>
+        <p>Teléfono: (55) 1234-5678</p>
+        <p>Desarrollado por KireDev</p>
+    </footer>
+    
+</body>
+<script src="../js/bootstrap.bundle.js"></script>
+<script src="../js/sesion.js"></script>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>Credencial Utc Ecatepec - Preguntas Frecuentes</title>
+</head>
+
+<body style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="credencial.html">
+                <img src="/images/logoBlanco.png" alt="Logo Utc Ecatepec" class="me-2" style="width: 50px;">
+                Credencial Utc Ecatepec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="" class="nav-link text-white">Ayuda</a></li>
+                    <li class="nav-item"><a href="" class="nav-link text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="preguntasFrecuentes.html" class="nav-link text-white">Preguntas
+                            Frecuentes</a></li>
+                </ul>
+                <div class="d-flex align-items-center ms-3">
+                    <img src="/images/fotoPrueba.png" alt="Usuario" class="rounded-circle me-2 d-none d-lg-block"
+                        style="width: 50px;">
+                    <div>
+                        <p class="mb-0 text-white" id="userName">Gomez Pineda Erik Alejandro</p>
+                        <button class="btn btn-light btn-sm" onclick="cerrarSesion()">Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row">
+            <div class="col-12 row mb-4 bg-primary text-white rounded-5 text-center">
+                <h2>¡Activa tu Credencial Institucional UtC!</h2>
+                <p>Identifícate como estudiante de la Universidad tres Culturas y accede a beneficios, descuentos,
+                    eventos y todos los servicios académicos con tu credencial física o digital. ¡Es rápida, segura y
+                    representa tu orgullo Utc!</p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="row g-4">
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="bg-white pb-3 rounded-3 overflow-hidden">
+                        <div class="card-header bg-primary text-white text-center py-1 mb-2">
+                            <h2><ion-icon name="id-card"></ion-icon> Credencial Utc Ecatepec</h2>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="position-relative d-inline-block">
+                                <img src="/images/infantil.jpg" alt="" class="rounded-circle mb-3"
+                                    style="width: 150px;">
+                                <button class="btn btn-primary position-absolute rounded-5"
+                                    style="bottom: 10%; right: 0;">
+                                    <ion-icon name="camera-reverse"></ion-icon>
+                                </button>
+                            </div>
+                            <p><strong>Nombre:</strong> [Nombre del Estudiante]</p>
+                            <p><strong>Matricula:</strong> [Número de Matrícula]</p>
+                            <p><strong>Carrera:</strong> [Nombre de la Carrera]</p>
+                            <p><strong>Cuatrimestre:</strong> [Cuatrimestre]</p>
+                            <p><strong>Vigencia:</strong> [Fecha de Vencimiento]</p>
+                            <p><strong>Correo:</strong> [Correo Institucional]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 rounded-4 overflow-hidden">
+                    <h2 class="card-header bg-primary text-white text-center rounded-top-3">Preguntas Frecuentes</h2>
+
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse1">
+                                    ¿Qué es la credencial institucional UTC?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    La credencial institucional es un documento oficial que identifica al estudiante
+                                    como miembro activo de la Universidad tres Culturas. Puede presentarse en formato
+                                    físico o digital.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse2">
+                                    ¿Qué beneficios tengo al contar con mi credencial?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Ingreso a instalaciones universitarias.</li>
+                                        <li>Descuentos y promociones en establecimientos afiliados.</li>
+                                        <li>Participación en eventos académicos y culturales.</li>
+                                        <li>Validación rápida de identidad para trámites escolares.</li>
+                                        <li>Acceso a plataformas educativas y servicios internos.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse3">
+                                    ¿Cuál es la diferencia entre la credencial física y la digital?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Característica</th>
+                                                    <th>Credencial Digital</th>
+                                                    <th>Credencial Física</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Acceso rápido</td>
+                                                    <td>✅ A través de tu celular</td>
+                                                    <td>🔲 Necesitas llevarla contigo</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Seguridad</td>
+                                                    <td>✅ Código QR único</td>
+                                                    <td>🔲 Puede extraviarse o deteriorarse</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Sustentabilidad</td>
+                                                    <td>✅ Sin uso de plástico o papel</td>
+                                                    <td>🔲 Requiere materiales físicos</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Durabilidad</td>
+                                                    <td>✅ No se daña con el tiempo</td>
+                                                    <td>🔲 Puede romperse o borrarse</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Aceptación en eventos</td>
+                                                    <td>✅ Escaneable desde dispositivos</td>
+                                                    <td>✅ Presentable físicamente</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Trámites presenciales</td>
+                                                    <td>🔲 No siempre aceptada</td>
+                                                    <td>✅ Más comúnmente solicitada</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse4">
+                                    ¿Cómo obtengo mi credencial?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Puedes solicitarla desde el portal institucional o acudir a Servicios Escolares. La
+                                    versión digital se genera automáticamente al validar tu inscripción.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse5">
+                                    ¿La credencial digital tiene la misma validez que la física?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, ambas versiones tienen la misma validez institucional, siempre que estén activas
+                                    y actualizadas.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse6">
+                                    ¿Qué hago si pierdo mi credencial física?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Debes reportarlo a Servicios Escolares y solicitar una reposición. Esto puede tener
+                                    un costo administrativo.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 7 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse7">
+                                    ¿Puedo portar solo la credencial digital?
+                                </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, siempre que el lugar donde la presentes acepte la validación por QR. Para
+                                    trámites oficiales se recomienda llevar la física.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pregunta 8 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8">
+                                    ¿Qué pasa si no tengo credencial?
+                                </button>
+                            </h2>
+                            <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    No podrás acceder a algunas instalaciones, promociones ni realizar ciertos trámites
+                                    escolares con facilidad.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white text-center py-4">
+        <p>&copy; 2025 Utc Ecatepec Todos los derechos reservados</p>
+        <p>Dirección: Av. Central 123, Ecatepec, Estado de México</p>
+        <p>Teléfono: (55) 1234-5678</p>
+        <p>Desarrollado por KireDev</p>
+    </footer>
+</body>
+<script src="../js/sesion.js"></script>
+<script src="../js/bootstrap.bundle.js"></script>
+</html>
