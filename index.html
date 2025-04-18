@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,30 +12,42 @@
 
 <body class="d-flex align-items-center justify-content-center vh-100"
     style="background: url(./images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+
     <div class="container-lg">
-        <div class="text-center bg-primary bg-opacity-75 p-4 shadow row"
-            style="border-radius: 1.5rem; color: white;">
+        <div class="text-center bg-primary bg-opacity-75 p-4 shadow row" style="border-radius: 1.5rem; color: white;">
             <div class="col-lg-6 col-md-12 mb-md-3">
                 <img src="./images/logoBlanco.png" alt="Logo UTC" class="img-fluid">
                 <h1 class="h4">Credencial UTC Ecatepec</h1>
             </div>
-            <form class="col-lg-6 col-md-12 h-100 my-auto">
+            <div class="col-lg-6 col-md-12 h-100 my-auto">
+
+                <div class="form-floating alert alert-danger align-items-center d-none p-2" role="alert"
+                    style="height: auto;" id="alerta">
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"
+                        style="width: 1.5rem; height: 1.5rem;"></svg>
+                    <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>
+                        ❌ Error al Iniciar Sesion
+                    </div>
+                </div>
+
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput" class="text-black">Correo Electronico</label>
+                    <input type="email" class="form-control" id="txtCorreo" placeholder="name@example.com">
+                    <label for="txtCorreo" class="text-black">Correo Electronico</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword" class="text-black">Contrsaseña</label>
                 </div>
-                <button type="submit" class="btn btn-light text-primary mt-5 py-2 px-5 fs-4"
-                    onclick="window.location.href='./views/credencial.html'; return false;">
+                <button class="btn btn-light text-primary mt-5 py-2 px-5 fs-4" id="btnIngresar">
                     Ingresar
                 </button>
-            </form>
+            </div>
         </div>
     </div>
-    
+
 </body>
+<script src="./js/iniciarSesion.js" type="module"></script>
 
 </html>

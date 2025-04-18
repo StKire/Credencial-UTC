@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credencial Utc Ecatepec - Lector Qr</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="icon" href="../images/logoBlanco.png" type="image/png">
+</head>
+
+<body class="d-flex align-items-center justify-content-center vh-100"
+    style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+    <div class="container col-lg-6 col-md-12 bg-primary p-5 bg-opacity-75">
+        <h1 class="text-center text-white text-uppercase">Lector de QR</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <video id="preview" class="w-100 border rounded"></video>
+                        <p class="mt-3">Escaneo de Credeciales para acceder.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script>
+        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        scanner.addListener('scan', function (content) {
+            alert('Contenido del QR: ' + content);
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+            } else {
+                console.error('No se encontraron cámaras.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
+    </script>
+
+</body>
+
+</html>

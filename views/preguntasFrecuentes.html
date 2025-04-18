@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -30,11 +30,10 @@
                             Frecuentes</a></li>
                 </ul>
                 <div class="d-flex align-items-center ms-3">
-                    <img src="../images/fotoPrueba.png" alt="Usuario" class="rounded-circle me-2 d-none d-lg-block"
-                        style="width: 50px;">
+                    <img src="" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none" style="width: 50px;" id="navFoto">
                     <div>
-                        <p class="mb-0 text-white" id="userName">Gomez Pineda Erik Alejandro</p>
-                        <button class="btn btn-light btn-sm" onclick="cerrarSesion()">Cerrar Sesión</button>
+                        <p class="mb-0 text-white" id="userName"></p>
+                        <button class="btn btn-light btn-sm" id="btnCerrar">Cerrar Sesión</button>
                     </div>
                 </div>
             </div>
@@ -60,19 +59,17 @@
                         </div>
                         <div class="card-body text-center">
                             <div class="position-relative d-inline-block">
-                                <img src="../images/infantil.jpg" alt="" class="rounded-circle mb-3"
-                                    style="width: 150px;">
-                                <button class="btn btn-primary position-absolute rounded-5"
-                                    style="bottom: 10%; right: 0;">
+                                <img src="" alt="Foto del Alumno" class="rounded-circle mb-3" style="width: 150px;" id="credencialFoto">
+                                <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;" id="btnCambiarFoto">
                                     <ion-icon name="camera-reverse"></ion-icon>
                                 </button>
                             </div>
-                            <p><strong>Nombre:</strong> [Nombre del Estudiante]</p>
-                            <p><strong>Matricula:</strong> [Número de Matrícula]</p>
-                            <p><strong>Carrera:</strong> [Nombre de la Carrera]</p>
-                            <p><strong>Cuatrimestre:</strong> [Cuatrimestre]</p>
-                            <p><strong>Vigencia:</strong> [Fecha de Vencimiento]</p>
-                            <p><strong>Correo:</strong> [Correo Institucional]</p>
+                            <p><strong>Nombre: </strong><span id="credencialNombre"></span></p>
+                            <p><strong>Matricula: </strong><span id="credencialMatricula"></span></p>
+                            <p><strong>Carrera: </strong><span id="credencialCarrera"></span></p>
+                            <p><strong>Cuatrimestre: </strong><span id="credencialCuatrimestre"></span></p>
+                            <p><strong>Vigencia: </strong><span id="credencialVigencia"></span></p>
+                            <p><strong>Correo: </strong><span id="credencialCorreo"></span></p>
                         </div>
                     </div>
                 </div>
@@ -269,6 +266,7 @@
         <p>Desarrollado por KireDev</p>
     </footer>
 </body>
-<script src="../js/sesion.js"></script>
-<script src="../js/bootstrap.bundle.js"></script>
+<script src="../js/credencial.js"></script>
+<script src="../js/cerrarSesion.js"></script>
+<script src="../js/plugins/bootstrap.bundle.js"></script>
 </html>
