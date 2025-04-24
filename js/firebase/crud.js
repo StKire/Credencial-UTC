@@ -71,3 +71,31 @@ export const buscarUsuarioPorMatricula = async (matricula) => {
         return null;
     }
 };
+
+// Guardar solicitud
+export const guardarSolicitud = async (id, datos) => {
+    try {
+        await setDoc(doc(db, "solicitudes", id.toString()), datos);
+        console.log("✅ Solicitud guardada con éxito");
+    } catch (error) {
+        console.error("❌ Error al guardar solicitud:", error);
+    }
+};
+
+// Buscar solicitud por matrícula
+export const buscarSolicitudPorMatricula = async (matricula) => {
+    try {
+        const q = query(collection(db, "solicitudes"), where("matricula", "==", Number(matricula)));
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0]; // Solo el primero
+            return doc.data();
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error("❌ Error al buscar solicitud por matrícula:", error);
+        return null;
+    }
+};
+
