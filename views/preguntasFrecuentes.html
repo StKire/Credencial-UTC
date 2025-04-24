@@ -24,16 +24,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="" class="nav-link text-white">Ayuda</a></li>
-                    <li class="nav-item"><a href="" class="nav-link text-white">Contacto</a></li>
-                    <li class="nav-item"><a href="preguntasFrecuentes.html" class="nav-link text-white">Preguntas
-                            Frecuentes</a></li>
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda y Contacto</a>
+                    </li>
+                    <li class="nav-item"><a href="preguntasFrecuentes.html"
+                            class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
                 </ul>
                 <div class="d-flex align-items-center ms-3">
-                    <img src="" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none" style="width: 50px; height: 50px;" id="navFoto">
-                    <div>
-                        <p class="mb-0 text-white" id="userName"></p>
-                        <button class="btn btn-light btn-sm" id="btnCerrar">Cerrar Sesión</button>
+                    <img src="" alt="Usuario" class="rounded-circle d-lg-block d-none"
+                        style="width: 50px; height: 50px;" id="navFoto">
+                    <div class="row text-center">
+                        <p class="mb-0 text-white col-12" id="userName"></p>
+                        <button class="btn btn-light btn-sm col-4 mx-auto" id="btnCerrar">Cerrar Sesión</button>
                     </div>
                 </div>
             </div>
@@ -59,8 +60,10 @@
                         </div>
                         <div class="card-body text-center">
                             <div class="position-relative d-inline-block">
-                                <img src="" alt="Foto del Alumno" class="rounded-circle mb-3" style="width: 150px; height: 150px;" id="credencialFoto">
-                                <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;" id="btnCambiarFoto">
+                                <img src="" alt="Foto del Alumno" class="rounded-circle mb-3"
+                                    style="width: 150px; height: 150px;" id="credencialFoto">
+                                <button class="btn btn-primary position-absolute rounded-5"
+                                    style="bottom: 10%; right: 0;" id="btnCambiarFoto">
                                     <ion-icon name="camera-reverse"></ion-icon>
                                 </button>
                             </div>
@@ -269,4 +272,5 @@
 <script src="../js/credencial.js"></script>
 <script src="../js/cerrarSesion.js"></script>
 <script src="../js/plugins/bootstrap.bundle.js"></script>
+
 </html>
