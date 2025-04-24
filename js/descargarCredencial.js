@@ -16,13 +16,13 @@ async function crearContenido(callback) {
 
     contenedor.innerHTML = `
     <div class="col-lg-6 col-md-12 mx-auto container-lg row h-lg-50 h-md-auto p-3"
-      style="background: linear-gradient(160deg, rgba(255,255,255,1) 0%, rgba(231,49,42,1) 20%, rgba(29,60,136,1) 70%);
+      style="background: url(../images/Credencial-100.jpg); background-size: cover;
       color: white; font-family: sans-serif; width: 600px;">
       <div class="col-lg-4 col-md-12 d-flex justify-content-center align-items-center px-4">
           <div id="qrContainer"></div>
       </div>
       <div class="col-lg-8 col-md-12 mx-auto d-flex flex-column justify-content-center align-items-start p-lg-3 p-md-2">
-          <img src="../images/logoBlanco.png" alt="Logo Utc Ecatepec" style="width: 100px;">
+          <img src="../images/logoBlanco.png" alt="Logo Utc Ecatepec" style="width: 100px;" class="mx-auto">
           <p class="text-center mx-auto text-light my-1 fs-4 text-uppercase">Nombre del Alumno:<br><span>${alumnoUtc.nombre}</span></p>
           <p class="text-center mx-auto text-light my-1 fs-4 text-uppercase">Carrera:<br><span>${alumnoUtc.carrera}</span></p>
           <p class="text-center mx-auto text-light my-1 fs-4 text-uppercase">Cuatrimestre:<br><span>${alumnoUtc.cuatrimestre}</span></p>
