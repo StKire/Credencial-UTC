@@ -54,3 +54,20 @@ export const buscarUsuarioPorCorreo = async (email) => {
     }
 };
 
+// Buscar usuario por matrícula
+export const buscarUsuarioPorMatricula = async (matricula) => {
+    try {
+        const q = query(collection(db, "alumnos"), where("matricula", "==", Number(matricula)));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0]; // Solo el primero
+            return doc.data();
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error("❌ Error al buscar usuario por matrícula:", error);
+        return null;
+    }
+};
