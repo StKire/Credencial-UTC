@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const alumnoUtc = JSON.parse(alumnoUtcData);
 
         const userName = document.getElementById('userName');
-        const imgNav = document.getElementById('navFoto');  
+        const imgNav = document.getElementById('navFoto');
 
         const imgCredencial = document.getElementById('credencialFoto');
         const credencialNombre = document.getElementById('credencialNombre');
@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const credencialCuatrimestre = document.getElementById('credencialCuatrimestre');
         const credencialVigencia = document.getElementById('credencialVigencia');
         const credencialCorreo = document.getElementById('credencialCorreo');
+        const qrCanvas = document.getElementById('qrCanvas');
 
         if (userName) userName.textContent = alumnoUtc.nombre
         if (imgNav) imgNav.src = alumnoUtc.foto;
@@ -26,8 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (credencialVigencia) credencialVigencia.textContent = alumnoUtc.vigencia;
         if (credencialCorreo) credencialCorreo.textContent = alumnoUtc.correo;
 
+        const matricula = alumnoUtc.matricula;
+        const qrLink = `https://stkire.github.io/Credencial-UTC/views/credencialEscolar.html?matricula=${encodeURIComponent(matricula)}`;
+
+        if (qrCanvas) {
+            QRCode.toCanvas(qrCanvas, qrLink, function (error) {
+                if (error) console.error('Error generating QR code:', error);
+            });
+        }
+
     } else {
         console.log('No se encontró información con el nombre "alumnoUtc" en el localStorage.');
     }
+
+
+
 
 })

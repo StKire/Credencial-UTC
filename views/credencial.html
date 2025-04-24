@@ -28,10 +28,12 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda</a></li>
                     <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Contacto</a></li>
-                    <li class="nav-item"><a href="preguntasFrecuentes.html" class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
+                    <li class="nav-item"><a href="preguntasFrecuentes.html"
+                            class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
                 </ul>
                 <div class="d-flex align-items-center ms-3">
-                    <img src="" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none" style="width: 50px; height: 50px;" id="navFoto">
+                    <img src="" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none"
+                        style="width: 50px; height: 50px;" id="navFoto">
                     <div>
                         <p class="mb-0 text-white" id="userName"></p>
                         <button class="btn btn-light btn-sm" id="btnCerrar">Cerrar Sesión</button>
@@ -57,8 +59,10 @@
                     </div>
                     <div class="card-body text-center">
                         <div class="position-relative d-inline-block">
-                            <img src="" alt="Foto del Alumno" class="rounded-circle mb-3" style="width: 150px; height: 150px;" id="credencialFoto">
-                            <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;" id="btnCambiarFoto">
+                            <img src="" alt="Foto del Alumno" class="rounded-circle mb-3"
+                                style="width: 150px; height: 150px;" id="credencialFoto">
+                            <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;"
+                                id="btnCambiarFoto">
                                 <ion-icon name="camera-reverse"></ion-icon>
                             </button>
                         </div>
@@ -81,22 +85,18 @@
                                 <div id="qrContainer" class="d-flex justify-content-center">
                                     <canvas id="qrCanvas" style="width: 300px; height: 300px;"></canvas>
                                     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-                                    <script>
-                                        const qrCanvas = document.getElementById('qrCanvas');
-                                        const qrLink = "https://www.youtube.com/watch?v=GV1VGgkdXTQ&list=RDGMEMHDXYb1_DDSgDsobPsOFxpAVMm2VyHTVIJvg&index=25"; // Replace with your dynamic link
-                                        QRCode.toCanvas(qrCanvas, qrLink, function (error) {
-                                            if (error) console.error(error);
-                                        });
-                                    </script>
                                 </div>
                             </div>
                             <hr>
-                            <button class="btn btn-primary w-100 mb-2" id="btnDescargar"><ion-icon name="download-outline"></ion-icon> Descargar Credencial</button>
-                            <button class="btn btn-primary w-100" id="btnSolicitar"><ion-icon name="bag-check"></ion-icon> Solicitar Credencial Física</button>
+                            <button class="btn btn-primary w-100 mb-2" id="btnDescargar"><ion-icon
+                                    name="download-outline"></ion-icon> Descargar Credencial</button>
+                            <button class="btn btn-primary w-100" id="btnSolicitar"><ion-icon
+                                    name="bag-check"></ion-icon> Solicitar Credencial Física</button>
                         </div>
                         <hr>
                         <div>
-                            <h3 class="text-primary text-center"><ion-icon name="chatbox"></ion-icon> Notificaciones</h3>
+                            <h3 class="text-primary text-center"><ion-icon name="chatbox"></ion-icon> Notificaciones
+                            </h3>
                             <div class="text-center" id="notificaciones">No Tienes Notificaciones por el Momento</div>
                         </div>
                     </div>
@@ -104,12 +104,13 @@
             </div>
         </div>
 
-        <div class="row mt-5" >
+        <div class="row mt-5">
             <div class="col">
                 <div class="bg-white rounded-5 p-3">
                     <div class="card-body text-center">
                         <h2 class="mb-4 text-primary">Información Importante <ion-icon name="alert"></ion-icon></h2>
-                        <p>La credencial es un documento oficial que te identifica como estudiante de la Utc Ecatepec.</p>
+                        <p>La credencial es un documento oficial que te identifica como estudiante de la Utc Ecatepec.
+                        </p>
                         <p>Es importante que la lleves contigo en todo momento.</p>
                         <p>Si tienes alguna duda, no dudes en contactarnos.</p>
                     </div>
@@ -124,10 +125,11 @@
         <p>Teléfono: (55) 1234-5678</p>
         <p>Desarrollado por KireDev</p>
     </footer>
-    
+
 </body>
 <script src="../js/plugins/bootstrap.bundle.js"></script>
 <script src="../js/credencial.js"></script>
 <script src="../js/cambiarFoto.js" type="module"></script>
 <script src="../js/cerrarSesion.js"></script>
+
 </html>
