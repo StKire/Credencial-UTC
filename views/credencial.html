@@ -26,17 +26,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda</a></li>
-                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda y Contacto</a></li>
                     <li class="nav-item"><a href="preguntasFrecuentes.html"
                             class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
                 </ul>
                 <div class="d-flex align-items-center ms-3">
-                    <img src="" alt="Usuario" class="rounded-circle me-2 d-lg-block d-none"
+                    <img src="" alt="Usuario" class="rounded-circle d-lg-block d-none"
                         style="width: 50px; height: 50px;" id="navFoto">
-                    <div>
-                        <p class="mb-0 text-white" id="userName"></p>
-                        <button class="btn btn-light btn-sm" id="btnCerrar">Cerrar Sesión</button>
+                    <div class="row text-center">
+                        <p class="mb-0 text-white col-12" id="userName"></p>
+                        <button class="btn btn-light btn-sm col-4 mx-auto" id="btnCerrar">Cerrar Sesión</button>
                     </div>
                 </div>
             </div>
@@ -84,12 +83,19 @@
                                 <h3 class="text-primary"><ion-icon name="qr-code"></ion-icon> Código QR</h3>
                                 <div id="qrContainer" class="d-flex justify-content-center">
                                     <canvas id="qrCanvas" style="width: 300px; height: 300px;"></canvas>
-                                    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
                                 </div>
                             </div>
                             <hr>
-                            <button class="btn btn-primary w-100 mb-2" id="btnDescargar"><ion-icon
-                                    name="download-outline"></ion-icon> Descargar Credencial</button>
+                            <button class="btn btn-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescargarCredencial" aria-expanded="false" aria-controls="collapseDescargarCredencial">
+                                <ion-icon name="download-outline"></ion-icon> Descargar Credencial
+                            </button>
+                            <div class="collapse w-100 mb-2" id="collapseDescargarCredencial">
+                                <div class="row">
+                                    <span class="col-12 text-primary text-center mb-2">Descargar en:</span>
+                                    <button class="btn btn-primary col-5 mx-auto" id="descargarPdf">Pdf</button>
+                                    <button class="btn btn-primary col-5 mx-auto" id="descargarPng">Png</button>
+                                </div>
+                            </div>
                             <button class="btn btn-primary w-100" id="btnSolicitar"><ion-icon
                                     name="bag-check"></ion-icon> Solicitar Credencial Física</button>
                         </div>
@@ -127,9 +133,13 @@
     </footer>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script src="../js/plugins/bootstrap.bundle.js"></script>
 <script src="../js/credencial.js"></script>
 <script src="../js/cambiarFoto.js" type="module"></script>
+<script src="../js/descargarCredencial.js"></script>
 <script src="../js/cerrarSesion.js"></script>
 
 </html>
