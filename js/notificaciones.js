@@ -10,8 +10,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const matricula = alumnoUtc.matricula;
 
     const solicitudFoto = await buscarSolicitudDeFotoPorMatricula(matricula);
-    
+    const spinner = document.getElementById('notifoto');
+            spinner.classList.remove('d-flex');
+            spinner.classList.add('d-none');
     const solicitud = await buscarSolicitudPorMatricula(matricula);
+    const spinner2 = document.getElementById('noticreden');
+            spinner2.classList.remove('d-flex');
+            spinner2.classList.add('d-none');
 
     // Función para agregar alertas
     const mostrarAlerta = (tipo, mensaje) => {
@@ -26,9 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const procesarSolicitudFoto = (solicitudFoto) => {        
         try {
             const { estado, fecha, motivo } = solicitudFoto;
-            const spinner = document.getElementById('notifoto');
-                    spinner.classList.remove('d-flex');
-                    spinner.classList.add('d-none');
             switch (estado) {
                 case 'aceptada':
                     mostrarAlerta('success', `<strong>¡Solicitud aceptada!</strong> Tu Foto fue aceptada el ${fecha}.`);
@@ -45,9 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch {
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Foto por el momento</strong>.`);
-            const spinner = document.getElementById('notifoto');
-            spinner.classList.remove('d-flex');
-            spinner.classList.add('d-none');
+            
         }
     };
 
@@ -55,9 +55,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const procesarSolicitudCredencial = (solicitud) => {
         try {
             const { estado, fecha, pago } = solicitud;
-            const spinner = document.getElementById('noticreden');
-            spinner.classList.remove('d-flex');
-            spinner.classList.add('d-none');
             switch (estado) {
                 case 'aceptada':
                     mostrarAlerta('success', `<strong>¡Solicitud aceptada!</strong> Tu solicitud fue aceptada el ${fecha}.<br><span>Por favor realiza el pago correspondiente</span>`);
@@ -93,9 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch {
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Credencial por el momento</strong>.`);
-            const spinner = document.getElementById('noticreden');
-            spinner.classList.remove('d-flex');
-            spinner.classList.add('d-none');
         }
     };
 
