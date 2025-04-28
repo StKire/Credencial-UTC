@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     const reason = specificReason || selectedReason;
-                    await editarSolicitudDeFoto(foto.matricula, { estatus: "rechazada", motivo: reason });
+                    await editarSolicitudDeFoto(foto.matricula, { estado: "rechazada", motivo: reason });
 
                     // Cerrar el modal
                     const bootstrapModal = bootstrap.Modal.getInstance(modal);
