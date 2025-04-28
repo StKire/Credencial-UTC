@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="icon" href="../images/logoBlanco.png" type="image/png">
+
+    <title>Credencial Utc Ecatepec</title>
+</head>
+
+<body style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="credencial.html">
+                <img src="../images/logoBlanco.png" alt="Logo Utc Ecatepec" class="me-2" style="width: 50px;">
+                Credencial Utc Ecatepec
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="navItems">
+                    <li class="nav-item"><a href="credencial.html" class="btn text-white btn-primary nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Reportar Errores</a>
+                    </li>
+                    <li class="nav-item"><a href="preguntasFrecuentes.html"
+                            class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
+                </ul>
+                <div class="d-flex align-items-center ms-3">
+                    <img src="" alt="Usuario" class="rounded-circle d-lg-block d-none"
+                        style="width: 50px; height: 50px;" id="navFoto">
+                    <div class="row text-center">
+                        <p class="mb-0 text-white col-12" id="userName"></p>
+                        <button class="btn btn-light btn-sm col-4 mx-auto" id="btnCerrar">Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container mt-5 text-center">
+        <div class="row mb-4 bg-primary text-white rounded-5">
+            <div class="col text-center p-2">
+                <h2 class="text-center">Resolucion de solucitudes</h2>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-lg">
+        <div class="row">
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card bg-light shadow-sm border-primary">
+                    <div class="card-body text-center text-white bg-primary">
+                        <h5 class="card-title">Solicitudes de Credencial Fisica</h5>
+                        <p class="card-text">Aquí puedes ver las solicitudes que aún no han sido atendidas.</p>
+                        <div id="tarjetasCredenciales" class="">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card bg-light shadow-sm border-primary">
+                    <div class="card-body text-center bg-primary text-white">
+                        <h5 class="card-title">Solicitudes de Foto de Credencial</h5>
+                        <p class="card-text">Aquí puedes ver las solicitudes de fotos para credencial.</p>
+                        <div id="tarjetasFotos" class="">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<script src="../js/plugins/bootstrap.bundle.js"></script>
+<script src="../js/solicitudes.js" type="module"></script>
+
+</html>

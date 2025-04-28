@@ -25,8 +25,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Ayuda y Contacto</a></li>
+                <ul class="navbar-nav ms-auto" id="navItems">
+
+                    <li class="nav-item"><a href="" class="btn text-white btn-primary nav-link">Reportar Errores</a>
+                    </li>
                     <li class="nav-item"><a href="preguntasFrecuentes.html"
                             class="btn text-white btn-primary nav-link">Preguntas Frecuentes</a></li>
                 </ul>
@@ -61,7 +63,7 @@
                             <img src="" alt="Foto del Alumno" class="rounded-circle mb-3"
                                 style="width: 150px; height: 150px;" id="credencialFoto">
                             <button class="btn btn-primary position-absolute rounded-5" style="bottom: 10%; right: 0;"
-                                id="btnCambiarFoto">
+                                id="btnCambiarFoto" data-bs-toggle="modal" data-bs-target="#confirmacionModal">
                                 <ion-icon name="camera-reverse"></ion-icon>
                             </button>
                         </div>
@@ -86,7 +88,9 @@
                                 </div>
                             </div>
                             <hr>
-                            <button class="btn btn-primary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescargarCredencial" aria-expanded="false" aria-controls="collapseDescargarCredencial">
+                            <button class="btn btn-primary w-100 mb-2" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseDescargarCredencial" aria-expanded="false"
+                                aria-controls="collapseDescargarCredencial">
                                 <ion-icon name="download-outline"></ion-icon> Descargar Credencial
                             </button>
                             <div class="collapse w-100 mb-2" id="collapseDescargarCredencial">
@@ -96,44 +100,64 @@
                                     <button class="btn btn-primary col-5 mx-auto" id="descargarPng">Png</button>
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#solicitarModal">
+                            <button class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#solicitarModal">
                                 <ion-icon name="bag-check"></ion-icon> Solicitar Credencial Física
                             </button>
-                            <p class="w-100 text-center">Para solicitar tu credencial física, asegúrate de que tus datos sean correctos.</p>
+                            <p class="w-100 text-center">Para solicitar tu credencial física, asegúrate de que tus datos
+                                sean correctos.</p>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="solicitarModal" tabindex="-1" aria-labelledby="solicitarModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="solicitarModal" tabindex="-1"
+                                aria-labelledby="solicitarModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="solicitarModalLabel">Solicitar Credencial Física</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <h5 class="modal-title" id="solicitarModalLabel">Solicitar Credencial Física
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>El costo de la credencial física es de $100 MXN, el cual deberá ser cubierto antes de su entrega.</p>
-                                            <p>¿Estás seguro de que deseas solicitar tu credencial física? Se enviará una solicitud al área correspondiente.</p>
+                                            <p>El costo de la credencial física es de $100 MXN, el cual deberá ser
+                                                cubierto antes de su entrega.</p>
+                                            <p>¿Estás seguro de que deseas solicitar tu credencial física? Se enviará
+                                                una solicitud al área correspondiente.</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" id="confirmarSolicitud" data-bs-toggle="modal" data-bs-target="#confirmacionModal">Confirmar</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" id="confirmarSolicitud"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#confirmacionModal">Confirmar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Confirmation Modal -->
-                            <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="confirmacionModal" tabindex="-1"
+                                aria-labelledby="confirmacionModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="confirmacionModalLabel">Solicitud Confirmada</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <h5 class="modal-title" id="confirmacionModalLabel">Solicitud Confirmada
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p id="textoConfirmacion"></p>
+                                            <p id="textoConfirmacion">
+                                            <div class="d-flex justify-content-center" id="spinner">
+                                                <div class="spinner-border text-primary" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </div>
+                                            </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="location.reload();">Aceptar</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                                onclick="location.reload();">Aceptar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -144,6 +168,16 @@
                             <h3 class="text-primary text-center"><ion-icon name="chatbox"></ion-icon> Notificaciones
                             </h3>
                             <div class="text-center" id="notificaciones">
+                                <div class="d-flex justify-content-center mb-3" id="notifoto">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center" id="noticreden">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,6 +213,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script src="../js/plugins/bootstrap.bundle.js"></script>
+<script src="../js/administrador.js"></script>
 <script src="../js/credencial.js"></script>
 <script src="../js/cambiarFoto.js" type="module"></script>
 <script src="../js/descargarCredencial.js"></script>

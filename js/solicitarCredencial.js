@@ -10,12 +10,16 @@ btnSolicitar.addEventListener('click', async () => {
         const matricula = alumnoUtc.matricula;
         const solicitudExistente = await buscarSolicitudPorMatricula(matricula);
         if(solicitudExistente) {
+            const spinner = document.getElementById('spinner');
+                    spinner.classList.remove('d-flex');
+                    spinner.classList.add('d-none');
             const textoConfirmacion = document.getElementById('textoConfirmacion');
             textoConfirmacion.textContent = `Ya existe una solicitud de credencial física para la matrícula ${matricula}.`;
             textoConfirmacion.style.color = 'red';
             return;
         }   
         const datos = {
+            foto: alumnoUtc.foto,
             nombre: alumnoUtc.nombre,
             matricula: alumnoUtc.matricula,
             correo: alumnoUtc.correo,
@@ -27,6 +31,9 @@ btnSolicitar.addEventListener('click', async () => {
             fechaLimitada: null, // Fecha límite para el pago
         };
         await guardarSolicitud(alumnoUtc.matricula, datos);
+        const spinner = document.getElementById('spinner');
+                    spinner.classList.remove('d-flex');
+                    spinner.classList.add('d-none');
         const textoConfirmacion = document.getElementById('textoConfirmacion');
         textoConfirmacion.textContent = `Tu solicitud para la credencial física ha sido enviada exitosamente. Nos pondremos en contacto contigo para más detalles.`;
         textoConfirmacion.style.color = 'green';

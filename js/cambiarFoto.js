@@ -1,18 +1,9 @@
-import { editarUsuario } from './firebase/crud.js';
+import { guardarSolicitudDeFoto, borrarSolicitudDeFotoPorMatricula } from './firebase/crud.js';
 
 document.getElementById('btnCambiarFoto').addEventListener('click', async () => {
     const inputFile = document.createElement('input');
     inputFile.type = 'file';
     inputFile.accept = 'image/*';
-
-    const alumnoUtcData = localStorage.getItem('alumnoUtc');
-
-    if (!alumnoUtcData) {
-        console.warn('⚠️ No se encontró información del alumno en localStorage');
-        return;
-    }
-
-    const alumnoUtc = JSON.parse(alumnoUtcData);
 
     inputFile.onchange = async (e) => {
         const archivo = e.target.files[0];
@@ -20,31 +11,44 @@ document.getElementById('btnCambiarFoto').addEventListener('click', async () => 
 
         const reader = new FileReader();
 
-        reader.onload = async (event) => {
+            reader.onload = async (event) => {
+
             const base64Foto = event.target.result;
+            const alumnoUtcData = localStorage.getItem('alumnoUtc');
+            if (alumnoUtcData) {
+                const alumnoUtc = JSON.parse(alumnoUtcData);
+                const matricula = alumnoUtc.matricula;
+                
+                await borrarSolicitudDeFotoPorMatricula(matricula);
+                try {
+                    
+                    const datos = {
+                        foto: base64Foto,
+                        nombre: alumnoUtc.nombre,
+                        matricula: alumnoUtc.matricula,
+                        correo: alumnoUtc.correo,
+                        solicitud: 'solicitud de foto',
+                        fecha: new Date().toLocaleDateString(),
+                        estado: 'pendiente', // Otros estados podrían ser: 'en proceso', 'aprobada', 'rechazada', 'completada'
+                        motivo: '', // Motivo de rechazo si aplica
+                    };
 
-            try {
-                // Actualizamos Firestore
-                await editarUsuario(alumnoUtc.matricula, { foto: base64Foto });
-
-                // Actualizamos localStorage
-                alumnoUtc.foto = base64Foto;
-                localStorage.setItem('alumnoUtc', JSON.stringify(alumnoUtc));
-
-                // Mostramos la nueva imagen en pantalla
-                const imgNav = document.getElementById('navFoto');
-                const imgCredencial = document.getElementById('credencialFoto');
-                if (imgNav) imgNav.src = base64Foto;
-                if (imgCredencial) imgCredencial.src = base64Foto;
-
-                console.log("✅ Foto de perfil actualizada correctamente");
-            } catch (error) {
-                console.error("❌ Error al actualizar la foto:", error);
+                    await guardarSolicitudDeFoto(matricula, datos);
+                    const spinner = document.getElementById('spinner');
+                    spinner.classList.remove('d-flex');
+                    spinner.classList.add('d-none');
+                    const textoConfirmacion = document.getElementById('textoConfirmacion');
+                    textoConfirmacion.textContent = `Tu solicitud para cambiar la foto ha sido enviada exitosamente. Nos pondremos en contacto contigo para más detalles.`;
+                    textoConfirmacion.style.color = 'green';
+                } catch (error) {
+                    const textoConfirmacion = document.getElementById('textoConfirmacion');
+                    textoConfirmacion.textContent = `Ocurrió un error al enviar tu solicitud.`;
+                    textoConfirmacion.style.color = 'red';
+                }
             }
         };
 
         reader.readAsDataURL(archivo);
-    };
-
+    }
     inputFile.click();
 });
