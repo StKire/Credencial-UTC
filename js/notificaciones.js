@@ -44,10 +44,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     break;
             }
         } catch {
-            console.log("hola");
-            
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Foto por el momento</strong>.`);
-            const spinner = document.getElementById('noticreden');
+            const spinner = document.getElementById('notifoto');
             spinner.classList.remove('d-flex');
             spinner.classList.add('d-none');
         }
