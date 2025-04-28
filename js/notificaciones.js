@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("hola");
             
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Foto por el momento</strong>.`);
+            const spinner = document.getElementById('noticreden');
+            spinner.classList.remove('d-flex');
+            spinner.classList.add('d-none');
         }
     };
 
@@ -92,6 +95,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch {
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Credencial por el momento</strong>.`);
+            const spinner = document.getElementById('noticreden');
+            spinner.classList.remove('d-flex');
+            spinner.classList.add('d-none');
         }
     };
 
