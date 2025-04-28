@@ -229,8 +229,9 @@ document.addEventListener("DOMContentLoaded", () => {
             acceptButton.classList.add("col-5", "mx-auto", "btn", "btn-success");
             acceptButton.textContent = "Aceptar";
             acceptButton.addEventListener('click', async ()=>{
-                await editarSolicitudDeFoto(foto.matricula,{estatus: "aceptada"});
+                await editarSolicitudDeFoto(foto.matricula,{estado: "aceptada"});
                 await editarUsuario(foto.matricula,{foto:foto.foto})
+                location.reload();
             })
 
             const denyButton = document.createElement("button");
