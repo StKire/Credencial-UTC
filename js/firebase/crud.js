@@ -159,28 +159,30 @@ export const borrarSolicitudDeFotoPorMatricula = async (matricula) => {
     }
 };
 
-// Obtener todos los documentos de la colección "credencialFisica"
-export const obtenerTodasLasCredencialesFisicas = async () => {
+// Obtener todos los documentos de la colección "credencialFisica" donde el estado sea "pendiente"
+export const obtenerCredencialesFisicasPendientes = async () => {
     try {
-        const credencialesSnapshot = await getDocs(collection(db, "credencialFisica"));
+        const q = query(collection(db, "credencialFisica"), where("estado", "==", "pendiente"));
+        const credencialesSnapshot = await getDocs(q);
         const credenciales = credencialesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log("✅ Credenciales físicas obtenidas con éxito");
+        console.log("✅ Credenciales físicas pendientes obtenidas con éxito");
         return credenciales;
     } catch (error) {
-        console.error("❌ Error al obtener credenciales físicas:", error);
+        console.error("❌ Error al obtener credenciales físicas pendientes:", error);
         return [];
     }
 };
 
-// Obtener todas las solicitudes de foto
-export const obtenerTodasLasSolicitudesDeFoto = async () => {
+// Obtener todas las solicitudes de foto donde el estado sea "pendiente"
+export const obtenerSolicitudesDeFotoPendientes = async () => {
     try {
-        const solicitudesSnapshot = await getDocs(collection(db, "solicitudesFotos"));
+        const q = query(collection(db, "solicitudesFotos"), where("estado", "==", "pendiente"));
+        const solicitudesSnapshot = await getDocs(q);
         const solicitudes = solicitudesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.log("✅ Solicitudes de foto obtenidas con éxito");
+        console.log("✅ Solicitudes de foto pendientes obtenidas con éxito");
         return solicitudes;
     } catch (error) {
-        console.error("❌ Error al obtener solicitudes de foto:", error);
+        console.error("❌ Error al obtener solicitudes de foto pendientes:", error);
         return [];
     }
 };

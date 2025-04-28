@@ -1,4 +1,4 @@
-import { obtenerTodasLasCredencialesFisicas, buscarUsuarioPorMatricula, obtenerTodasLasSolicitudesDeFoto, editarSolicitudDeFoto, editarUsuario } from "./firebase/crud.js";
+import { buscarUsuarioPorMatricula, editarSolicitudDeFoto, editarUsuario,obtenerCredencialesFisicasPendientes, obtenerSolicitudesDeFotoPendientes } from "./firebase/crud.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const alumno = localStorage.getItem("alumnoUtc");
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const tarjetasCredenciales = document.getElementById("tarjetasCredenciales");
-    const credenciales = obtenerTodasLasCredencialesFisicas();
+    const credenciales = obtenerCredencialesFisicasPendientes();
     
     credenciales.then((credenciales) => {
         credenciales.forEach((credencial) => {
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const tarjetasFotos = document.getElementById('tarjetasFotos');
-    const fotos = obtenerTodasLasSolicitudesDeFoto();
+    const fotos = obtenerSolicitudesDeFotoPendientes();
 
     fotos.then((fotos)=>{
         fotos.forEach((foto) => {
@@ -306,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Cerrar el modal
                     const bootstrapModal = bootstrap.Modal.getInstance(modal);
                     bootstrapModal.hide();
+                    location.reload();
                 });
 
                 const cancelButton = document.createElement("button");
