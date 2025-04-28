@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const matricula = alumnoUtc.matricula;
 
     const solicitudFoto = await buscarSolicitudDeFotoPorMatricula(matricula);
-    
+
     const spinner = document.getElementById('notifoto');
     spinner.classList.remove('d-flex');
     spinner.classList.add('d-none');
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Función para procesar la solicitud de credencial
     const procesarSolicitudCredencial = (solicitud) => {
         try {
-            const { estado, fecha, pago } = solicitud;
+            const { estado, fecha, pago, motivo } = solicitud;
             switch (estado) {
                 case 'aceptada':
                     mostrarAlerta('success', `<strong>¡Solicitud aceptada!</strong> Tu solicitud fue aceptada el ${fecha}.<br><span>Por favor realiza el pago correspondiente</span>`);
@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     break;
 
                 case 'rechazada':
-                    mostrarAlerta('danger', `<strong>¡Solicitud rechazada!</strong> Tu solicitud fue rechazada el ${fecha}.<br><span>Por favor realiza la solicitud de nuevo</span>`);
+                    mostrarAlerta('danger', `<strong>¡Solicitud rechazada!</strong> Tu solicitud fue rechazada el ${fecha}.
+                        <br><span>Por el motivo: ${motivo}</span>
+                        <br><span>Por favor realiza la solicitud de nuevo</span>`);
                     break;
 
                 case 'pendiente':

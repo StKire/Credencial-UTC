@@ -93,6 +93,26 @@ export const editarSolicitud = async (id, nuevosDatos) => {
     }
 }
 
+//borrar solicitud por matricula
+export const borrarSolicitudPorMatricula = async (matricula) => {
+    try {
+        const q = query(collection(db, "credencialFisica"), where("matricula", "==", Number(matricula)));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+            const batch = writeBatch(db);
+            querySnapshot.docs.forEach(doc => {
+                batch.delete(doc.ref);
+            });
+            await batch.commit();
+        } else {
+            console.log("⚠️ No se encontraron solicitudes para la matrícula proporcionada");
+        }
+    } catch (error) {
+        console.error("❌ Error al borrar solicitud por matrícula:", error);
+    }
+}
+
 // Buscar solicitud por matrícula
 export const buscarSolicitudPorMatricula = async (matricula) => {
     try {

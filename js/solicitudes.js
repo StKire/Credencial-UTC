@@ -119,8 +119,99 @@ document.addEventListener("DOMContentLoaded", () => {
                 denyButton.classList.add("btn", "btn-danger");
                 denyButton.textContent = "Denegar";
                 denyButton.addEventListener("click", async () => {
-                    await editarSolicitud(credencial.matricula, { estado: "rechazada" });
-                    location.reload();
+                    // Crear el modal de razón
+                    const modalRazon = document.createElement("div");
+                    modalRazon.classList.add("modal", "fade");
+                    modalRazon.setAttribute("tabindex", "-1");
+                    modalRazon.setAttribute("role", "dialog");
+
+                    const modalDialogRazon = document.createElement("div");
+                    modalDialogRazon.classList.add("modal-dialog", "modal-dialog-centered");
+                    modalDialogRazon.setAttribute("role", "document");
+
+                    const modalContentRazon = document.createElement("div");
+                    modalContentRazon.classList.add("modal-content");
+
+                    const modalHeaderRazon = document.createElement("div");
+                    modalHeaderRazon.classList.add("modal-header");
+
+                    const modalTitleRazon = document.createElement("h5");
+                    modalTitleRazon.classList.add("modal-title");
+                    modalTitleRazon.textContent = "Razón para rechazar la credencial";
+
+                    const closeButtonRazon = document.createElement("button");
+                    closeButtonRazon.classList.add("btn-close");
+                    closeButtonRazon.setAttribute("data-bs-dismiss", "modal");
+                    closeButtonRazon.setAttribute("aria-label", "Close");
+
+                    modalHeaderRazon.appendChild(modalTitleRazon);
+                    modalHeaderRazon.appendChild(closeButtonRazon);
+
+                    const modalBodyRazon = document.createElement("div");
+                    modalBodyRazon.classList.add("modal-body");
+
+                    const selectReasonRazon = document.createElement("select");
+                    selectReasonRazon.classList.add("form-select", "mb-3");
+                    selectReasonRazon.innerHTML = `
+                        <option value="" selected disabled>Selecciona una razón</option>
+                        <option value="Información incorrecta">Información incorrecta</option>
+                        <option value="Foto no válida">Foto no válida</option>
+                        <option value="Datos incompletos">Datos incompletos</option>
+                    `;
+
+                    const customReasonRazon = document.createElement("textarea");
+                    customReasonRazon.classList.add("form-control");
+                    customReasonRazon.setAttribute("placeholder", "Escribe una razón específica (opcional)");
+                    customReasonRazon.setAttribute("rows", "3");
+
+                    modalBodyRazon.appendChild(selectReasonRazon);
+                    modalBodyRazon.appendChild(customReasonRazon);
+
+                    const modalFooterRazon = document.createElement("div");
+                    modalFooterRazon.classList.add("modal-footer");
+
+                    const saveButtonRazon = document.createElement("button");
+                    saveButtonRazon.classList.add("btn", "btn-primary");
+                    saveButtonRazon.textContent = "Guardar";
+                    saveButtonRazon.addEventListener("click", async () => {
+                        const selectedReason = selectReasonRazon.value;
+                        const specificReason = customReasonRazon.value;
+
+                        if (!selectedReason && !specificReason) {
+                            alert("Por favor selecciona o escribe una razón.");
+                            return;
+                        }
+
+                        const reason = specificReason || selectedReason;
+                        await editarSolicitud(credencial.matricula, { estado: "rechazada", motivo: reason, fecha: new Date().toLocaleDateString() });
+
+                        // Cerrar el modal
+                        const bootstrapModalRazon = bootstrap.Modal.getInstance(modalRazon);
+                        bootstrapModalRazon.hide();
+                        location.reload();
+                    });
+
+                    const cancelButtonRazon = document.createElement("button");
+                    cancelButtonRazon.classList.add("btn", "btn-secondary");
+                    cancelButtonRazon.setAttribute("data-bs-dismiss", "modal");
+                    cancelButtonRazon.textContent = "Cancelar";
+
+                    modalFooterRazon.appendChild(saveButtonRazon);
+                    modalFooterRazon.appendChild(cancelButtonRazon);
+
+                    modalContentRazon.appendChild(modalHeaderRazon);
+                    modalContentRazon.appendChild(modalBodyRazon);
+                    modalContentRazon.appendChild(modalFooterRazon);
+
+                    modalDialogRazon.appendChild(modalContentRazon);
+                    modalRazon.appendChild(modalDialogRazon);
+
+                    // Agregar el modal al cuerpo del documento
+                    document.body.appendChild(modalRazon);
+
+                    // Mostrar el modal
+                    const bootstrapModalRazon = new bootstrap.Modal(modalRazon);
+                    bootstrapModalRazon.show();
                 });
 
                 modalFooter.appendChild(acceptButton);
