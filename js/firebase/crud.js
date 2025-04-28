@@ -82,6 +82,17 @@ export const guardarSolicitud = async (id, datos) => {
     }
 };
 
+//editar solicitud de credencial (merge)
+export const editarSolicitud = async (id, nuevosDatos) => {
+    try {
+        const solicitudRef = doc(db, "credencialFisica", id.toString());
+        await setDoc(solicitudRef, nuevosDatos, { merge: true });
+        console.log("✅ Solicitud editada con éxito");
+    } catch (error) {
+        console.error("❌ Error al editar solicitud:", error);
+    }
+}
+
 // Buscar solicitud por matrícula
 export const buscarSolicitudPorMatricula = async (matricula) => {
     try {

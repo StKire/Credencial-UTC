@@ -1,4 +1,4 @@
-import { buscarUsuarioPorMatricula, editarSolicitudDeFoto, editarUsuario,obtenerCredencialesFisicasPendientes, obtenerSolicitudesDeFotoPendientes } from "./firebase/crud.js";
+import { buscarUsuarioPorMatricula, editarSolicitud, editarSolicitudDeFoto, editarUsuario,obtenerCredencialesFisicasPendientes, obtenerSolicitudesDeFotoPendientes } from "./firebase/crud.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const alumno = localStorage.getItem("alumnoUtc");
@@ -104,12 +104,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 const modalFooter = document.createElement("div");
                 modalFooter.classList.add("modal-footer");
 
-                const closeFooterButton = document.createElement("button");
-                closeFooterButton.classList.add("btn", "btn-primary");
-                closeFooterButton.setAttribute("data-bs-dismiss", "modal");
-                closeFooterButton.textContent = "Cerrar";
+                const acceptButton = document.createElement("button");
+                acceptButton.classList.add("btn", "btn-success");
+                acceptButton.textContent = "Aceptar";
+                acceptButton.addEventListener("click", async () => {
+                    const fechaActual = new Date();
+                const fechaLimite = new Date(fechaActual);
+                fechaLimite.setDate(fechaActual.getDate() + 7);
+                    await editarSolicitud(credencial.matricula, { estado: "aceptada", fecha: fechaActual.toLocaleDateString(), fechaLimite: fechaLimite.toLocaleDateString() });
+                    location.reload();
+                });
 
-                modalFooter.appendChild(closeFooterButton);
+                const denyButton = document.createElement("button");
+                denyButton.classList.add("btn", "btn-danger");
+                denyButton.textContent = "Denegar";
+                denyButton.addEventListener("click", async () => {
+                    await editarSolicitud(credencial.matricula, { estado: "rechazada" });
+                    location.reload();
+                });
+
+                modalFooter.appendChild(acceptButton);
+                modalFooter.appendChild(denyButton);
 
                 modalContent.appendChild(modalBody);
                 modalContent.appendChild(modalFooter);
@@ -230,7 +245,10 @@ document.addEventListener("DOMContentLoaded", () => {
             acceptButton.textContent = "Aceptar";
             acceptButton.addEventListener('click', async ()=>{
                 await editarSolicitudDeFoto(foto.matricula,{estado: "aceptada"});
-                await editarUsuario(foto.matricula,{foto:foto.foto})
+                const fechaActual = new Date();
+                const fechaLimite = new Date(fechaActual);
+                fechaLimite.setDate(fechaActual.getDate() + 7);
+                await editarUsuario(foto.matricula, { foto: foto.foto, fecha: fechaActual.toLocaleDateString(), fechaLimite: fechaLimite.toLocaleDateString()});
                 location.reload();
             })
 
@@ -302,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     const reason = specificReason || selectedReason;
-                    await editarSolicitudDeFoto(foto.matricula, { estado: "rechazada", motivo: reason });
+                    await editarSolicitudDeFoto(foto.matricula, { estado: "rechazada", motivo: reason, fecha: new Date().toLocaleDateString() });
 
                     // Cerrar el modal
                     const bootstrapModal = bootstrap.Modal.getInstance(modal);

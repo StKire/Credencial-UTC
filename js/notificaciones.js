@@ -10,13 +10,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const matricula = alumnoUtc.matricula;
 
     const solicitudFoto = await buscarSolicitudDeFotoPorMatricula(matricula);
+    
     const spinner = document.getElementById('notifoto');
-            spinner.classList.remove('d-flex');
-            spinner.classList.add('d-none');
+    spinner.classList.remove('d-flex');
+    spinner.classList.add('d-none');
+
     const solicitud = await buscarSolicitudPorMatricula(matricula);
+
     const spinner2 = document.getElementById('noticreden');
-            spinner2.classList.remove('d-flex');
-            spinner2.classList.add('d-none');
+    spinner2.classList.remove('d-flex');
+    spinner2.classList.add('d-none');
 
     // Función para agregar alertas
     const mostrarAlerta = (tipo, mensaje) => {
@@ -28,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     // Función para procesar la solicitud de foto
-    const procesarSolicitudFoto = (solicitudFoto) => {        
+    const procesarSolicitudFoto = (solicitudFoto) => {
         try {
             const { estado, fecha, motivo } = solicitudFoto;
             switch (estado) {
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch {
             mostrarAlerta('info', `<strong>No tienes notificaciones sobre Foto por el momento</strong>.`);
-            
+
         }
     };
 
