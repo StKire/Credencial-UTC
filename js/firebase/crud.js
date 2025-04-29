@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, setDoc, doc, query, where, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, setDoc, doc, query, where, getDocs, writeBatch, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Configuración de Firebase
@@ -239,5 +239,29 @@ export const guardarReporteDeError = async (datos) => {
     } catch (error) {
         console.error("❌ Error al guardar reporte de error:", error);
         return null;
+    }
+};
+
+// Obtener todos los reportes de errores
+export const obtenerReportesDeErrores = async () => {
+    try {
+        const reportesSnapshot = await getDocs(collection(db, "reportesErrores"));
+        const reportes = reportesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log("✅ Reportes de errores obtenidos con éxito");
+        return reportes;
+    } catch (error) {
+        console.error("❌ Error al obtener reportes de errores:", error);
+        return [];
+    }
+};
+
+// Borrar documento por ID en la colección "reportesErrores"
+export const borrarReporteDeErrorPorId = async (id) => {
+    try {
+        const docRef = doc(db, "reportesErrores", id.toString());
+        await deleteDoc(docRef);
+        console.log(`✅ Reporte de error con ID ${id} borrado con éxito`);
+    } catch (error) {
+        console.error(`❌ Error al borrar reporte de error con ID ${id}:`, error);
     }
 };
