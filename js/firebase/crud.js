@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, setDoc, doc, query, where, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -226,5 +227,17 @@ export const editarSolicitudDeFoto = async (id, nuevosDatos) => {
         console.log("✅ Solicitud de foto editada con éxito");
     } catch (error) {
         console.error("❌ Error al editar solicitud de foto:", error);
+    }
+};
+
+// Guardar reporte de error con ID automático y retornar el ID
+export const guardarReporteDeError = async (datos) => {
+    try {
+        const docRef = await addDoc(collection(db, "reportesErrores"), datos);
+        console.log("✅ Reporte de error guardado con éxito, ID:", docRef.id);
+        return docRef.id;
+    } catch (error) {
+        console.error("❌ Error al guardar reporte de error:", error);
+        return null;
     }
 };

@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="icon" href="../images/logoBlanco.png" type="image/png">
-
-    <title>Credencial Utc Ecatepec</title>
+    <title>Reportar Errores</title>
 </head>
-
-<body style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<body class="vh-100" style="background: url(../images/fondo.jpg) center/cover no-repeat fixed; margin: 0;">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -44,46 +38,29 @@
         </div>
     </nav>
 
-    <header class="container mt-5 text-center">
-        <div class="row mb-4 bg-primary text-white rounded-5">
-            <div class="col text-center p-2">
-                <h2 class="text-center">Resolucion de solucitudes</h2>
-            </div>
-        </div>
-    </header>
 
-    <main class="container-lg">
-        <div class="row">
-            <div class="col-12 col-lg-6 mb-4">
-                <div class="card bg-light shadow-sm border-primary">
-                    <div class="card-body text-center text-white bg-primary">
-                        <h5 class="card-title">Solicitudes de Credencial Fisica</h5>
-                        <p class="card-text">Aquí puedes ver las solicitudes que aún no han sido atendidas.</p>
-                        <div id="tarjetasCredenciales" class="">
-                            
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-6 col-md-8 mx-auto container-lg row h-lg-50 h-md-auto p-4 rounded-5 bg-white shadow-lg">
+        <h2 class="text-center col-12 mx-auto text-primary fs-1 text-capitalize mb-4">Reportar Errores</h2>
+        <form id="reportarErroresForm" class="col-12 d-flex flex-column justify-content-center align-items-center p-3">
+            <div class="mb-3 w-100">
+            <label for="nombre" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" required>
             </div>
-            
-            <div class="col-12 col-lg-6 mb-4">
-                <div class="card bg-light shadow-sm border-primary">
-                    <div class="card-body text-center bg-primary text-white">
-                        <h5 class="card-title">Solicitudes de Foto de Credencial</h5>
-                        <p class="card-text">Aquí puedes ver las solicitudes de fotos para credencial.</p>
-                        <div id="tarjetasFotos" class="">
-
-                        </div>
-                    </div>
-                </div>
+            <div class="mb-3 w-100">
+            <label for="matricula" class="form-label">Matricula</label>
+            <input type="text" class="form-control" id="matricula" placeholder="Ingresa tu matrícula" required>
             </div>
-        </div>
-    </main>
-
+            <div class="mb-3 w-100">
+            <label for="error" class="form-label">Descripción del Error</label>
+            <textarea class="form-control" id="error" rows="4" placeholder="Describe el error encontrado" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Enviar Reporte</button>
+        </form>
+        <div id="mensaje" class="col-12 mt-3 text-center"></div>
+    </div>
+    
 </body>
-
 <script src="../js/plugins/bootstrap.bundle.js"></script>
-<script src="../js/solicitudes.js" type="module"></script>
+<script src="../js/reporte.js" type="module"></script>
 <script src="../js/cerrarSesion.js"></script>
-
 </html>
