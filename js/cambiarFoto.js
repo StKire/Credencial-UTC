@@ -1,4 +1,4 @@
-import { guardarSolicitudDeFoto, borrarSolicitudDeFotoPorMatricula } from './firebase/crud.js';
+import { guardarSolicitudDeFoto, borrarSolicitudDeFotoPorMatricula, editarUsuario } from './firebase/crud.js';
 
 document.getElementById('btnCambiarFoto').addEventListener('click', async () => {
     const inputFile = document.createElement('input');
@@ -18,32 +18,53 @@ document.getElementById('btnCambiarFoto').addEventListener('click', async () => 
             if (alumnoUtcData) {
                 const alumnoUtc = JSON.parse(alumnoUtcData);
                 const matricula = alumnoUtc.matricula;
-                
-                await borrarSolicitudDeFotoPorMatricula(matricula);
-                try {
-                    
-                    const datos = {
-                        foto: base64Foto,
-                        nombre: alumnoUtc.nombre,
-                        matricula: alumnoUtc.matricula,
-                        correo: alumnoUtc.correo,
-                        solicitud: 'solicitud de foto',
-                        fecha: new Date().toLocaleDateString(),
-                        estado: 'pendiente', // Otros estados podrían ser: 'en proceso', 'aprobada', 'rechazada', 'completada'
-                        motivo: '', // Motivo de rechazo si aplica
-                    };
+                const admin = alumnoUtc.admin;
 
-                    await guardarSolicitudDeFoto(matricula, datos);
-                    const spinner = document.getElementById('spinner');
-                    spinner.classList.remove('d-flex');
-                    spinner.classList.add('d-none');
-                    const textoConfirmacion = document.getElementById('textoConfirmacion');
-                    textoConfirmacion.textContent = `Tu solicitud para cambiar la foto ha sido enviada exitosamente. Nos pondremos en contacto contigo para más detalles.`;
-                    textoConfirmacion.style.color = 'green';
-                } catch (error) {
-                    const textoConfirmacion = document.getElementById('textoConfirmacion');
-                    textoConfirmacion.textContent = `Ocurrió un error al enviar tu solicitud.`;
-                    textoConfirmacion.style.color = 'red';
+                
+                if (admin) {
+                    try {
+                        await editarUsuario(matricula, { foto: base64Foto });
+                        alumnoUtc.foto = base64Foto;
+                        localStorage.setItem('alumnoUtc', JSON.stringify(alumnoUtc));
+
+                        const spinner = document.getElementById('spinner');
+                        spinner.classList.remove('d-flex');
+                        spinner.classList.add('d-none');
+
+                        const textoConfirmacion = document.getElementById('textoConfirmacion');
+                        textoConfirmacion.textContent = `Tu foto ha sido actualizada exitosamente.`;
+                        textoConfirmacion.style.color = 'green';
+                    } catch (error) {
+                        const textoConfirmacion = document.getElementById('textoConfirmacion');
+                        textoConfirmacion.textContent = `Ocurrió un error al actualizar tu foto.`;
+                        textoConfirmacion.style.color = 'red';
+                    }
+                } else {
+                    await borrarSolicitudDeFotoPorMatricula(matricula);
+                    try {
+                        const datos = {
+                            foto: base64Foto,
+                            nombre: alumnoUtc.nombre,
+                            matricula: alumnoUtc.matricula,
+                            correo: alumnoUtc.correo,
+                            solicitud: 'solicitud de foto',
+                            fecha: new Date().toLocaleDateString(),
+                            estado: 'pendiente', // Otros estados podrían ser: 'en proceso', 'aprobada', 'rechazada', 'completada'
+                            motivo: '', // Motivo de rechazo si aplica
+                        };
+
+                        await guardarSolicitudDeFoto(matricula, datos);
+                        const spinner = document.getElementById('spinner');
+                        spinner.classList.remove('d-flex');
+                        spinner.classList.add('d-none');
+                        const textoConfirmacion = document.getElementById('textoConfirmacion');
+                        textoConfirmacion.textContent = `Tu solicitud para cambiar la foto ha sido enviada exitosamente. Nos pondremos en contacto contigo para más detalles.`;
+                        textoConfirmacion.style.color = 'green';
+                    } catch (error) {
+                        const textoConfirmacion = document.getElementById('textoConfirmacion');
+                        textoConfirmacion.textContent = `Ocurrió un error al enviar tu solicitud.`;
+                        textoConfirmacion.style.color = 'red';
+                    }
                 }
             }
         };
